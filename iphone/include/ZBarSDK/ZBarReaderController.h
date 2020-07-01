@@ -47,7 +47,7 @@ typedef enum {
 } ZBarReaderControllerCameraMode;
 
 
-@class ZBarReaderController, ZBarHelpController;
+@class ZBarReaderController;
 
 @protocol ZBarReaderDelegate <UIImagePickerControllerDelegate>
 @optional
@@ -66,7 +66,6 @@ typedef enum {
       UIImagePickerControllerDelegate >
 {
     ZBarImageScanner *scanner;
-    ZBarHelpController *help;
     UIView *overlay, *boxView;
     CALayer *boxLayer;
 
@@ -127,12 +126,6 @@ typedef enum {
 // necessary, such that neither of its dimensions exceed this value.
 // defaults to 640.
 @property (nonatomic) NSInteger maxScanDimension;
-
-// display the built-in help browser.  for use with custom overlays if
-// you don't also want to create your own help view.  only send this
-// message when the reader is displayed.  the argument will be passed
-// to the onZBarHelp() javascript function.
-- (void) showHelpWithReason: (NSString*) reason;
 
 // direct scanner interface - scan UIImage and return something enumerable
 - (id <NSFastEnumeration>) scanImage: (CGImageRef) image;
